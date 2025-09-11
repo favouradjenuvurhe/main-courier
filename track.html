@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -7,12 +6,12 @@
   
   <link rel="shortcut icon" href="assets/img/icon/ca-fav2.svg">
   <!-- Font Awesome for icons (CDN) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-rXf+..." crossorigin="anonymous" referrerpolicy="no-referrer" />  <!-- Minimal standalone CSS that matches the provided UI feel -->  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
     :root{ --accent:#0d6efd; --dark:#0b2545; --muted:#6b7280; --bg:#f7fafc; }
     *{box-sizing:border-box}
     body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:#123;}
 
-    /* Header */
     .header{background:#fff; border-bottom:1px solid rgba(15,23,42,.05);}
     .header .inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:18px 20px}
     .logo img{height:44px}
@@ -20,7 +19,6 @@
     .nav a{color:var(--dark);text-decoration:none;font-weight:600}
     .btn-primary{background:var(--accent);color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600;display:inline-flex;gap:8px;align-items:center}
 
-    /* Hero */
     .hero{background:linear-gradient(180deg, rgba(13,110,253,.08), rgba(13,110,253,0.02));padding:48px 20px 64px}
     .hero-inner{max-width:1180px;margin:0 auto;display:flex;gap:24px;align-items:center}
     .hero-left{flex:1}
@@ -28,7 +26,6 @@
     h1{font-size:34px;margin:16px 0;line-height:1.05;color:var(--dark)}
     p.lead{color:var(--muted);margin:0 0 24px}
 
-    /* Tracking card */
     .track-card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 6px 20px rgba(9,30,66,.06);max-width:820px}
     .track-row{display:flex;gap:12px}
     .input{flex:1}
@@ -36,7 +33,6 @@
     .input input, .input select{width:100%;padding:12px;border-radius:8px;border:1px solid #e6eef8;font-size:15px}
     .track-actions{display:flex;gap:12px;align-items:center}
 
-    /* Results */
     .results{max-width:1180px;margin:24px auto;padding:20px}
     .card{background:#fff;padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(9,30,66,.04)}
     .meta{display:flex;gap:18px;flex-wrap:wrap}
@@ -44,15 +40,12 @@
     .meta .label{font-size:13px;color:var(--muted)}
     .meta .value{font-weight:700;color:var(--dark);margin-top:6px}
 
-    /* Timeline */
     .timeline{margin-top:16px;border-left:3px solid rgba(13,110,253,.12);padding-left:18px}
     .event{position:relative;padding:12px 0}
     .event:before{content:'';position:absolute;left:-10px;top:18px;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--accent)}
     .event .time{font-size:13px;color:var(--muted)}
     .event .desc{font-weight:600;margin-top:6px}
 
-
-    /* Responsive */
     @media (max-width:900px){
       .hero-inner{flex-direction:column;align-items:flex-start}
       h1{font-size:28px}
@@ -60,156 +53,141 @@
       .btn-primary{padding:10px 12px}
     }
 
-    /* small utility */
     .muted{color:var(--muted)}
     .center{display:flex;align-items:center;gap:8px}
-  </style></head>
+  </style>
+</head>
 <body>
-  <header class="header">
-  
-  </header>  <section class="hero">
+  <header class="header"></header>
+
+  <section class="hero">
     <div class="hero-inner">
       <div class="hero-left">
         <span class="kicker">Track Shipment</span>
         <h1>Track your shipment — real time updates</h1>
-        <p class="lead">Enter a tracking token or shipment number to see current status, location, and history. Works with Pulsepoint Courier, partners and integrated carriers.</p><div style="margin-top:18px" class="track-card" role="region" aria-label="Track shipment">
-      <form id="trackForm" onsubmit="return false">
-        <div class="track-row">
-          <div class="input">
-            <label for="token">Tracking Token / Shipment ID</label>
-            <input id="token" name="token" placeholder="e.g. PP-2025-000123" required>
-          </div>
-          <div class="input" style="max-width:170px">
-            <label for="carrier">Carrier</label>
-            <select id="carrier" name="carrier">
-              <option value="pulsepoint">Pulsepoint</option>
-              <option value="dhl">DHL</option>
-              <option value="fedex">FedEx</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div class="track-actions" style="align-self:end">
-            <button id="trackBtn" class="btn-primary" style="border:none;cursor:pointer">Track <i class="fa-solid fa-search"></i></button>
-          </div>
+        <p class="lead">Enter a tracking number to see current status, location, and history.</p>
+        <div style="margin-top:18px" class="track-card">
+          <form id="trackForm" onsubmit="return false">
+            <div class="track-row">
+              <div class="input">
+                <label for="tracking_number">Tracking Number</label>
+                <input id="tracking_number" name="tracking_number" placeholder="e.g. 737374747474" required>
+              </div>
+              <div class="track-actions" style="align-self:end">
+                <button id="trackBtn" class="btn-primary" style="border:none;cursor:pointer">
+                  Track <i class="fa-solid fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
-        <div style="margin-top:12px;font-size:13px;color:var(--muted)">Example tokens: <code>PP-2025-000123</code> · <code>FX-2034-AB12</code></div>
-      </form>
-    </div>
+      </div>
 
-  </div>
-  <div class="hero-right" style="flex:0 0 360px">
-    <div class="card">
-      <h3 style="margin:0 0 8px">Quick Help</h3>
-      <p class="muted" style="margin:0 0 12px">Need help locating a shipment? Contact our support with the tracking ID.</p>
-      <div style="display:flex;gap:12px;align-items:center">
-        <div style="background:linear-gradient(180deg,#eef8ff,#ffffff);padding:12px;border-radius:10px">
-          <i class="fa-solid fa-phone" style="font-size:20px;color:var(--accent)"></i>
-        </div>
-        <div>
-          <div class="muted">Contact Support</div>
-          <div style="font-weight:700">Livechat Box</div>
+      <div class="hero-right" style="flex:0 0 360px">
+        <div class="card">
+          <h3 style="margin:0 0 8px">Quick Help</h3>
+          <p class="muted" style="margin:0 0 12px">Need help locating a shipment? Contact our support with the tracking ID.</p>
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="background:linear-gradient(180deg,#eef8ff,#ffffff);padding:12px;border-radius:10px">
+              <i class="fa-solid fa-phone" style="font-size:20px;color:var(--accent)"></i>
+            </div>
+            <div>
+              <div class="muted">Contact Support</div>
+              <div style="font-weight:700">Livechat Box</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-  </section>  <main class="results">
-    <!-- Results placeholder: populated by JS -->
+  <main class="results">
     <div id="resultArea" class="card" style="display:none">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
         <div>
-          <h2 id="resTitle" style="margin:0 0 8px">Shipment Details</h2>
-          <div class="muted">Tracking token: <span id="resToken"></span></div>
+          <h2 style="margin:0 0 8px">Shipment Details</h2>
+          <div class="muted">Tracking number: <span id="resToken"></span></div>
         </div>
         <div style="text-align:right">
           <div class="muted">Current Status</div>
-          <div id="resStatus" style="font-weight:800;color:var(--accent);font-size:18px">In Transit</div>
+          <div id="resStatus" style="font-weight:800;color:var(--accent);font-size:18px"></div>
         </div>
-      </div><hr style="margin:12px 0;border:none;border-top:1px solid #eef2f8">
+      </div>
+      <hr style="margin:12px 0;border:none;border-top:1px solid #eef2f8">
 
-  <div class="meta">
-    <div class="item">
-      <div class="label">Origin</div>
-      <div class="value" id="resOrigin">Lagos, Nigeria</div>
-    </div>
-    <div class="item">
-      <div class="label">Destination</div>
-      <div class="value" id="resDest">Abuja, Nigeria</div>
-    </div>
-    <div class="item">
-      <div class="label">Estimated Delivery</div>
-      <div class="value" id="resETA">Sep 15, 2025</div>
-    </div>
-    <div class="item">
-      <div class="label">Weight</div>
-      <div class="value" id="resWeight">5.4 kg</div>
-    </div>
-  </div>
+      <div class="meta">
+        <div class="item"><div class="label">Origin</div><div class="value" id="resOrigin"></div></div>
+        <div class="item"><div class="label">Destination</div><div class="value" id="resDest"></div></div>
+        <div class="item"><div class="label">Estimated Delivery</div><div class="value" id="resETA"></div></div>
+        <div class="item"><div class="label">Weight</div><div class="value" id="resWeight"></div></div>
+      </div>
 
-  <div class="timeline" id="resTimeline">
-    <!-- events injected here -->
-  </div>
-</div>
+      <div class="timeline" id="resTimeline"></div>
+    </div>
 
-<div id="emptyState" class="card center" style="padding:40px;display:block">
-  <div style="text-align:center">
-    <div style="font-size:36px;color:var(--accent)"><i class="fa-solid fa-box"></i></div>
-    <h3 style="margin:12px 0 6px">Track your shipment now</h3>
-    <p class="muted">Enter a valid Tracking Token above and press <strong>Track</strong> to view details and progress.</p>
-  </div>
-</div>
+    <div id="emptyState" class="card center" style="padding:40px;display:block">
+      <div style="text-align:center">
+        <div style="font-size:36px;color:var(--accent)"><i class="fa-solid fa-box"></i></div>
+        <h3 style="margin:12px 0 6px">Track your shipment now</h3>
+        <p class="muted">Enter a valid Tracking Number above and press <strong>Track</strong> to view details.</p>
+      </div>
+    </div>
+  </main>
 
-  </main>  <footer style="padding:28px 20px;text-align:center;color:var(--muted);font-size:14px">
-    © <span class="muted">Track & Trace</span>
-  </footer>  <script>
-    // Demo JS: simulates fetching tracking details and renders timeline
-    document.getElementById('trackBtn').addEventListener('click', function(e){
+  <footer style="padding:28px 20px;text-align:center;color:var(--muted);font-size:14px">
+    
+  </footer>
+
+  <script>
+    const API_URL = "https://yourdomain.com/track.php";
+    const API_TOKEN = "my-secret-token";
+
+    document.getElementById('trackBtn').addEventListener('click', async function(e){
       e.preventDefault();
-      const token = document.getElementById('token').value.trim();
-      if(!token) { alert('Please enter a tracking token.'); return; }
-      // simulate fetch
-      renderResult(mockData(token));
+      const tracking_number = document.getElementById('tracking_number').value.trim();
+      if(!tracking_number){ alert("Please enter tracking number."); return; }
+
+      try {
+        const res = await fetch(API_URL, {
+          method: "POST",
+          headers: {"Content-Type":"application/json"},
+          body: JSON.stringify({ token: API_TOKEN, tracking_number })
+        });
+
+        const data = await res.json();
+        if(data && data.tracking_number){
+          renderResult(data);
+        } else {
+          alert("No details found for this tracking number.");
+        }
+      } catch(err){
+        console.error(err);
+        alert("Error fetching tracking details. Try again.");
+      }
     });
 
     function renderResult(data){
       document.getElementById('emptyState').style.display='none';
       const area = document.getElementById('resultArea'); area.style.display='block';
-      document.getElementById('resToken').textContent = data.token;
-      document.getElementById('resStatus').textContent = data.status;
-      document.getElementById('resOrigin').textContent = data.origin;
-      document.getElementById('resDest').textContent = data.destination;
-      document.getElementById('resETA').textContent = data.eta;
-      document.getElementById('resWeight').textContent = data.weight;
+
+      document.getElementById('resToken').textContent = data.tracking_number;
+      document.getElementById('resStatus').textContent = data.status || "Unknown";
+      document.getElementById('resOrigin').textContent = data.sender_address || "N/A";
+      document.getElementById('resDest').textContent = data.receiver_address || "N/A";
+      document.getElementById('resETA').textContent = data.expected_date || "N/A";
+      document.getElementById('resWeight').textContent = data.weight || "N/A";
 
       const tl = document.getElementById('resTimeline'); tl.innerHTML='';
-      data.history.forEach(ev=>{
-        const div = document.createElement('div'); div.className='event';
-        div.innerHTML = `<div class=\"time\">${ev.time}</div><div class=\"desc\">${ev.title}</div><div class=\"muted\">${ev.note||''}</div>`;
-        tl.appendChild(div);
-      });
-
-      // scroll to result on small screens
+      if(data.shipment_history){
+        const history = typeof data.shipment_history === "string" ? [data.shipment_history] : data.shipment_history;
+        history.forEach(ev=>{
+          const div = document.createElement('div'); div.className='event';
+          div.innerHTML = `<div class="time">${ev.time||""}</div><div class="desc">${ev.title||ev}</div><div class="muted">${ev.note||""}</div>`;
+          tl.appendChild(div);
+        });
+      }
       setTimeout(()=> area.scrollIntoView({behavior:'smooth'}),200);
     }
-
-    function mockData(token){
-      // replace with real API call
-      const now = new Date();
-      return {
-        token: token,
-        status: 'In Transit',
-        origin: 'Lagos, Nigeria (Ikeja Warehouse)',
-        destination: 'Abuja, Nigeria (Garki Hub)',
-        eta: new Date(now.getTime()+3*24*60*60*1000).toDateString(),
-        weight: '5.4 kg',
-        history: [
-          {time: '2025-09-11 09:43', title: 'Arrived at Abuja Hub', note: 'Scanned into facility'},
-          {time: '2025-09-10 21:12', title: 'Departed Lagos - Ikeja', note: 'Loaded on truck'},
-          {time: '2025-09-10 17:05', title: 'Picked up by courier', note: 'Shipment collected from sender'},
-          {time: '2025-09-09 08:20', title: 'Order created', note: 'Label printed and booking confirmed'}
-        ]
-      }
-    }
-  </script></body>
+  </script>
+</body>
 </html>
